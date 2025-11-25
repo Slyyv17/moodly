@@ -42,7 +42,7 @@ app.get('/', (req, res) => res.send('Moodly backend is live 🚀'));
 // ----------------------
 const io = new Server(server, {
   cors: {
-    origin: '*',
+    origin: 'http://localhost:5173',
     methods: ['GET', 'POST'],
   },
 });
