@@ -1,0 +1,14 @@
+@import "tailwindcss";
+/* index.css */
+
+/* Import custom font */
+
+/* Apply globally */
+html, body {
+  font-family: 'Mona-Sans', sans-serif;
+}
+
+/* Optional utility class */
+.pry-ff {
+  font-family: 'Mona-Sans', sans-serif;
+}
