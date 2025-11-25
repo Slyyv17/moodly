@@ -19,6 +19,6 @@ router.post('/sendChat', protectUser, sendChatHandler);
 router.post('/save', protectUser, saveChatHandler);
 
 // Get chat history between two users
-router.get('/history/:user1/:user2', protectUser, getChatHistoryHandler);
+router.get('/history/:friendId', protectUser, getChatHistoryHandler);
 
 module.exports = router;

@@ -138,7 +138,7 @@ async function getChatHistory(user1, user2) {
 
 async function getChatHistoryHandler(req, res, next) {
     try {
-        const { user1, user2 } = req.params;
+        const { user1, user2 } = req.query;
 
         if (!user1 || !user2) {
             return res.status(400).json({ error: "Both user1 and user2 required." });
