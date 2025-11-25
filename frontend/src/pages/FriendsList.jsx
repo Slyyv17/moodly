@@ -1,10 +1,9 @@
 import { useEffect, useState } from "react";
 import { GetFriends } from "../services/FriendService";
-import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 export default function FriendsList() {
   const [friends, setFriends] = useState([]);
-  const navigate = useNavigate();
 
   useEffect(() => {
     async function fetchFriends() {
@@ -20,14 +19,6 @@ export default function FriendsList() {
   }, []);
 
   if (!Array.isArray(friends)) return null;
-
-  const goToChat = (friend) => {
-    navigate(
-      `/chat?receiverId=${friend._id}&username=${encodeURIComponent(
-        friend.username
-      )}`
-    );
-  };
 
   return (
     <div className="overflow-x-auto">
@@ -55,9 +46,11 @@ export default function FriendsList() {
                 {friend.feeling || "neutral"}
               </td>
               <td className="px-6 py-4 text-center">
-                <button
-                  onClick={() => goToChat(friend)}
-                  className="p-2 rounded-full hover:bg-sky-500 transition-colors cursor-pointer"
+                <Link
+                  to={`/chat?receiverId=${friend._id}&username=${encodeURIComponent(
+                    friend.username
+                  )}`}
+                  className="p-2 rounded-full hover:bg-sky-500 transition-colors cursor-pointer inline-flex items-center justify-center"
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -73,7 +66,7 @@ export default function FriendsList() {
                       d="M7 8h10M7 12h4m1 8l-5-5H5a2 2 0 01-2-2V5a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-5 5z"
                     />
                   </svg>
-                </button>
+                </Link>
               </td>
             </tr>
           ))}
